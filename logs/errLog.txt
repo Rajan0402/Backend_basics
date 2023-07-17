@@ -1,3 +1,6 @@
 07052023	20:53:02	7f047f06-126a-47ac-a0e5-a63965ac16cb	TypeError: undefined
 07052023	20:53:25	d59e1175-68f7-4ac7-8859-a90d4301f12f	TypeError: response.writeHad is not a function
 07072023	18:52:19	67baae46-813e-41c1-92d5-217170957a7c	Error: Not allowed by CORS
+07172023	20:22:23	ae8d8d10-5a47-4215-b27f-7a53ab4389c7	Error: ENOENT: no such file or directory, stat 'E:\Web Dev\NodeJS DaveGray\3_Intro_to_Express\routes\views\new-page.html'
+07172023	21:26:14	0cd573ef-30f0-493e-b7da-a96f8443a6a1	SyntaxError: Unexpected token ' in JSON at position 6
+07172023	21:33:29	6e479098-4d87-4aea-92b9-ba360cf7246d	SyntaxError: Unexpected token i in JSON at position 1
