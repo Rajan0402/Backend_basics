@@ -1,0 +1,3 @@
+07052023	20:53:02	7f047f06-126a-47ac-a0e5-a63965ac16cb	TypeError: undefined
+07052023	20:53:25	d59e1175-68f7-4ac7-8859-a90d4301f12f	TypeError: response.writeHad is not a function
+07072023	18:52:19	67baae46-813e-41c1-92d5-217170957a7c	Error: Not allowed by CORS

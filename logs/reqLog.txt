@@ -1,0 +1,12 @@
+07072023	18:49:47	dbd3ab5f-807e-4b9c-87eb-f7c39e20868d	GET 	 undefined 	 /
+07072023	18:49:47	c0a63555-f730-425e-8b4c-e42fb0280573	GET 	 undefined 	 /css/style.css
+07172023	18:50:30	81fd58eb-b559-43d6-a235-d2f19af21676	GET 	 undefined 	 /new-page.html
+07172023	18:50:30	eb52eafc-20b4-4619-a9dc-6b81647398a2	GET 	 undefined 	 /css/style.css
+07172023	18:50:30	c36d7a4a-95cc-4f45-b471-e50b6ecc5286	GET 	 undefined 	 /img/img1.jpg
+07172023	19:17:35	a04b9ca8-66a7-4db1-b87b-3e7d963ef891	OPTIONS 	 https://www.google.com 	 /
+07172023	19:17:35	deba84b9-73e1-4997-aa55-76957e488883	GET 	 https://www.google.com 	 /
+07172023	19:24:41	50b2c977-1a0f-4b24-ba22-1e50dfc2f3c1	GET 	 undefined 	 /new-page
+07172023	19:24:41	d6820410-b5e9-4af3-9d89-56395069203a	GET 	 undefined 	 /css/style.css
+07172023	19:24:41	ab580be5-3fd5-4183-bdbf-594dca41b196	GET 	 undefined 	 /img/img1.jpg
+07172023	19:24:47	0d134d40-c7f6-4a52-be9c-dcf77932474a	GET 	 undefined 	 /new-pag
+07172023	19:24:47	8eedf031-edbf-4630-857f-92823eef0fca	GET 	 undefined 	 /css/style.css
