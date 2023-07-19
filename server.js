@@ -1,30 +1,16 @@
 const express = require("express");
 const app = express();
-const { logger } = require("./middleware/logEvents");
-const errorHandler = require("./middleware/errorHandler");
 const cors = require("cors");
 const path = require("path");
+const { logger } = require("./middleware/logEvents");
+const errorHandler = require("./middleware/errorHandler");
+const corsOption = require("./config/corsOption");
 const PORT = process.env.PORT || 3000;
 
 // custom middleware
 app.use(logger);
 
 // cross origin resource sharig
-const whiteList = [
-  "https://www.mysite.com",
-  "https://www.google.com",
-  "http://127.0.0.1:5500",
-  "http://localhost:3000",
-];
-const corsOption = {
-  origin: (origin, callback) => {
-    if (whiteList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
 app.use(cors(corsOption));
 
 // biult-in middleware to handle urlencoded data
@@ -42,21 +28,6 @@ app.use("/subdir", express.static(path.join(__dirname, "public")));
 app.use("/", require("./routes/root"));
 app.use("/subdir", require("./routes/subdir"));
 app.use("/employees", require("./routes/api/employees"));
-
-// ^ = should begin with next char, $ = should end with prev char, | = or
-// the regex means route should begin with and end with "/" or it can be "/index.html"
-// (...)? = means whatever under braces is optional
-
-app.get(
-  "/hello(.html)?",
-  (req, res, next) => {
-    console.log("attempted to load hello.html");
-    next();
-  },
-  (req, res) => {
-    res.send("Hello World!");
-  }
-);
 
 // * covers all remaining routes that are not available in server
 app.all("*", (req, res) => {
