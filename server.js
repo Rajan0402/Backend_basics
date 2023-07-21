@@ -7,10 +7,10 @@ const errorHandler = require("./middleware/errorHandler");
 const corsOption = require("./config/corsOption");
 const PORT = process.env.PORT || 3000;
 
-// custom middleware
+// custom middleware to log reqs
 app.use(logger);
 
-// cross origin resource sharig
+// cross origin resource sharing
 app.use(cors(corsOption));
 
 // biult-in middleware to handle urlencoded data
@@ -25,7 +25,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/subdir", express.static(path.join(__dirname, "public")));
 
+// routes
 app.use("/", require("./routes/root"));
+app.use("/register", require("./routes/register"));
+app.use("/login", require("./routes/login"));
 app.use("/subdir", require("./routes/subdir"));
 app.use("/employees", require("./routes/api/employees"));
 
@@ -41,6 +44,7 @@ app.all("*", (req, res) => {
   }
 });
 
+// custom middleware to log errors
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`server running on Port ${PORT}`));
