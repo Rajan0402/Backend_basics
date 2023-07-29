@@ -8,7 +8,6 @@ const usersDB = {
 const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 const fsPromises = require("fs").promises;
 const path = require("path");
 
@@ -57,8 +56,8 @@ const handleLogin = async (req, res) => {
       );
       res.cookie("jwt", refreshToken, {
         httpOnly: true,
-        sameSite: "none",
-        secure: true,
+        // sameSite: "none",
+        // secure: true, // ths should used for prod and in browser,with this property enabled we cant test refresh route in thunderclient
         maxAge: 24 * 60 * 60 * 1000,
       });
       res.json({ accessToken });
