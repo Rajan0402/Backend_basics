@@ -8,3 +8,7 @@
 07232023	03:59:42	0c0ed0b2-6f98-4e68-b87b-4055246ed2ae	SyntaxError: Unexpected token e in JSON at position 0
 07232023	04:00:54	1f556eb8-e021-496b-bd9d-11620cbea8ef	SyntaxError: Unexpected token e in JSON at position 0
 07232023	04:11:06	6ab35d60-8f4a-472b-bd53-38eef9223a1a	SyntaxError: Unexpected token e in JSON at position 0
+07292023	19:44:25	a532dbe3-8f25-4147-8a34-74a72be86e4b	TypeError: Cannot read properties of undefined (reading 'headers')
+07292023	19:53:16	a12c50bf-0445-41dd-909a-88bb4519caf9	SyntaxError: Unexpected token 1 in JSON at position 0
+07292023	19:55:48	1474528b-9390-4c26-9c9c-363ae65a2fb2	SyntaxError: Unexpected token i in JSON at position 1
+07292023	19:56:03	b13013e9-2922-4db6-9880-561c338705ca	SyntaxError: Unexpected token ' in JSON at position 1
