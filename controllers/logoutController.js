@@ -1,12 +1,4 @@
-const usersDB = {
-  users: require("../model/users.json"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
-
-const fsPromises = require("fs").promises;
-const path = require("path");
+const User = require("../model/User");
 
 const handleLogout = async (req, res) => {
   // on client also delete the access token
@@ -16,9 +8,9 @@ const handleLogout = async (req, res) => {
 
   const refreshToken = cookies.jwt;
 
-  const userExistWithRT = usersDB.users.find(
-    (person) => person.refreshToken === refreshToken
-  );
+  const userExistWithRT = await User.findOne({
+    refreshToken: refreshToken,
+  }).exec();
   try {
     // check if refresh token in DB
     if (!userExistWithRT) {
@@ -27,15 +19,13 @@ const handleLogout = async (req, res) => {
     }
 
     // remove refresh token form DB
-    const otherUsers = usersDB.users.filter(
-      (person) => person.refreshToken !== refreshToken
+
+    const result = await User.findOneAndUpdate(
+      { username: userExistWithRT.username },
+      { $set: { refreshToken: "" } },
+      { new: true }
     );
-    const currentUser = { ...userExistWithRT, refreshToken: "" };
-    usersDB.setUsers([otherUsers, currentUser]);
-    await fsPromises.writeFile(
-      path.join(__dirname, "..", "model", "users.json"),
-      JSON.stringify(usersDB.users)
-    );
+    console.log(result);
 
     res.clearCookie("jwt", {
       httpOnly: true,
