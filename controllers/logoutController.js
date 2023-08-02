@@ -5,12 +5,9 @@ const handleLogout = async (req, res) => {
 
   const cookies = req.cookies;
   if (!cookies?.jwt) return res.sendStatus(204);
-
   const refreshToken = cookies.jwt;
 
-  const userExistWithRT = await User.findOne({
-    refreshToken: refreshToken,
-  }).exec();
+  const userExistWithRT = await User.findOne({ refreshToken }).exec();
   try {
     // check if refresh token in DB
     if (!userExistWithRT) {
@@ -20,11 +17,16 @@ const handleLogout = async (req, res) => {
 
     // remove refresh token form DB
 
-    const result = await User.findOneAndUpdate(
-      { username: userExistWithRT.username },
-      { $set: { refreshToken: "" } },
-      { new: true }
-    );
+    // const result = await User.findOneAndUpdate(
+    //   { username: userExistWithRT.username },
+    //   { $set: { refreshToken: "" } },
+    //   { new: true }
+    // );
+    // console.log(result);
+    // ****** OR USE BELOW CODE ******* //
+
+    userExistWithRT.refreshToken = "";
+    const result = await userExistWithRT.save();
     console.log(result);
 
     res.clearCookie("jwt", {

@@ -1,6 +1,5 @@
 const User = require("../model/User");
 const bcrypt = require("bcrypt");
-
 const jwt = require("jsonwebtoken");
 
 const handleLogin = async (req, res) => {
@@ -29,7 +28,7 @@ const handleLogin = async (req, res) => {
           },
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "30S" }
+        { expiresIn: "10m" }
       );
       const refreshToken = jwt.sign(
         { username: userExist.username },
@@ -37,11 +36,14 @@ const handleLogin = async (req, res) => {
         { expiresIn: "1d" }
       );
       // saving refersh token with current user
-      const result = await User.findOneAndUpdate(
-        { username: user },
-        { refreshToken: refreshToken },
-        { new: true }
-      ).exec();
+      // const result = await User.findOneAndUpdate(
+      //   { username: user },
+      //   { refreshToken: refreshToken },
+      //   { new: true }
+      // ).exec();
+
+      userExist.refreshToken = refreshToken;
+      const result = await userExist.save();
       console.log(result);
 
       res.cookie("jwt", refreshToken, {
