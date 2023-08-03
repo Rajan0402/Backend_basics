@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { v4: uuid } = require("uuid");
 const employeesController = require("../../controllers/employeeController");
 const ROLES_LIST = require("../../config/roles_list");
 const verifyRoles = require("../../middleware/verifyRoles");
